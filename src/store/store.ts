@@ -1,15 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 // import counterReducer from './slices/countriesSlice'
 import countriesSlice from '../store/slices/countriesSliceTestTest'
+import countriesAllSlice from './slices/countriesAllSlice'
 // ...
 
 export const store = configureStore({
   reducer: {
-    // posts: postsReducer,
-    // comments: commentsReducer,
-    // users: usersReducer,
-    // counter: counterReducer,
-    countries : countriesSlice
+    countries : countriesSlice,
+    countriesAll : countriesAllSlice,
   },
 })
 

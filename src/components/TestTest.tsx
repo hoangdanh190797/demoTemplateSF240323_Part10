@@ -1,26 +1,44 @@
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { RootState } from "../store/store";
-import { Countries } from "../types/countries";
-import { CountriesSlice } from '../store/slices/countriesSliceTestTest'
-import { current } from "@reduxjs/toolkit";
+import { useAppDispatch, useAppSelector  } from '../hooks/hooks';
+import {  fetchCountries } from '../store/slices/countriesSliceTestTest'
 
 export default function TestTest() {
-    const country = useSelector((state : RootState) => state.countries.countries)
-    const statusTest = useSelector((state : RootState) => state.countries.status)
-    console.log(typeof country)
-    console.log(typeof statusTest)
-    console.log(country, statusTest);
-    // console.log(current(country));
-    
-    
+  const dispatch = useAppDispatch();
+
+  // const country = useSelector((state: RootState) => state.countries.countries)
+  //***Lay du lieu tu state xuong theo cach tren la lay truc tiep tu store ra
+
+  const country = useAppSelector((state) => state.countries.countries)
+  //***Lay du lieu thong qua Custom Component (tren ReduxToolkit co huong dan)
+  const status = useAppSelector((state) => state.countries.status)
+  const error = useAppSelector((state) => state.countries.error)
+
+useEffect(() => {
+  if (status === 'idle') {
+    dispatch(fetchCountries())
+  }
+}, []);
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'failed') {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
-        {Object.values(country).map((country: Countries) => (
-        <div>
-          {/* <h2>{country.name}</h2> */}
-          <p>{country.name.common}</p>
-        </div>
+      <p>Data:</p>
+      <pre>{JSON.stringify(country, null, 2)}</pre>
+      <ul>
+      {country.map((country: any) => (
+        <li key={country.cca2}>{country.cca2}</li>
       ))}
+    </ul>
     </div>
   )
 }

@@ -4,5 +4,9 @@ export declare interface Countries {
     cca3: string
     currencies: any | string
     idd: iddCountries
-    languages: string
+    languages: Languages
+    flags: Flags
+    population: number
+    capital?: string[];
+    region: Region;
 }
