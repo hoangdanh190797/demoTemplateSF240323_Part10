@@ -1,14 +1,14 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fecthcountriesAll } from '../store/slices/countriesAllSlice'
+import { countriesMethod } from '../store/slices/countriesAllSlice'
 import { Countries } from '../types/countries';
 
 export default function CountriesAll() {
     const dispatch = useAppDispatch();
     const countriesAll = useAppSelector((state) => state.countriesAll.countriesAll);
     useEffect(() => {
-        dispatch(fecthcountriesAll());
+        dispatch(countriesMethod.fecthcountriesAll);
     },[])
   return (
     <div>

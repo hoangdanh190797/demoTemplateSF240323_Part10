@@ -1,37 +1,49 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
-import { fecthcountriesAll } from '../store/slices/countriesAllSlice'
+import { countriesMethod, getStatusRegion } from '../store/slices/countriesAllSlice'
 import { Countries } from '../types/countries';
 
 export default function FilterRegion() {
+    // const dispatchReact = useDispatch();
     const dispatch = useAppDispatch();
     const countriesAll = useAppSelector((state) => state.countriesAll.countriesAll);
     useEffect(() => {
-      dispatch(fecthcountriesAll());
+      dispatch(
+        countriesMethod.fecthcountriesAll()
+);
     }, [])
-    const arrRegion = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+    const arrRegion = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
     const [value, setValue] = React.useState<string | null>(arrRegion[0]);
     const [inputValue, setInputValue] = React.useState('');
+    //Này là bên MUI hỗ trợ list lại các attribute để dể sử dụng:
     //Dùng cái nào cũng được    value kết hợp với onChange
     //Dùng ''            ''     inputValue kết hợp với onInputChange
+    //Nút SearchInput sẽ tìm kiếm và fill ra "renderInput"
+    //Nút SearchInput, MUI hỗ trợ quá tốt!!!
     console.log(value);
     console.log(inputValue);
+
+
+
     const newArray:Countries[] = []
     for(let items of countriesAll){
         if(items.region === value){
             newArray.push(items)
         }
     }
-
+    console.log(newArray);
+    
     // const newData = countriesAll.map((item) => item.region === value)
     // const [contentRender, setContentRender] = React.useState(newArray)
-    
+    dispatch(
+        countriesMethod.getRegion(newArray),
+        // getStatusRegion('test'),
+    )
 
-    // console.log(newArray); 
-    
     return (
         <>
             <Autocomplete
