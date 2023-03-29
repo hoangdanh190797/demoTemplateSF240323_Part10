@@ -10,6 +10,7 @@ declare interface iddCountries{
 }
 
 declare interface Languages{
+    fra: string;
     prs: string;
     pus: string;
     tuk: string

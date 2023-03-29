@@ -5,7 +5,7 @@ import { countriesMethod } from '../store/slices/countriesAllSlice'
 import { Countries } from '../types/countries';
 import CountriesComponent from './CountriesComponent';
 
-export default function CountriesTest (props : any) {
+export default function CountriesTest() {
   const dispatch = useAppDispatch();
 
   const statusHome = useAppSelector((state) => state.countriesAll.statusHome);
@@ -21,165 +21,21 @@ export default function CountriesTest (props : any) {
     dispatch(countriesMethod.fecthcountriesAll());
   }, [dispatch])
 
-  console.log(country);
-  console.log(statusHome);
-  console.log(countryArray);
-
   let arrayNotUndefine = countryArray.filter((items: any) => items !== undefined)
-  console.log(arrayNotUndefine);
 
   const clearCountry = () => {
-    if(arrayNotUndefine.length >= 2){
+    if (arrayNotUndefine.length >= 2) {
       arrayNotUndefine = arrayNotUndefine.slice(-1)
     }
   }
   clearCountry();
-  
-  // if(arrayNotUndefine.length > 0)
-  // {
-  //   setContentRender(arrayNotUndefine);
-  // }
-
-  
-
   return (
     <div>
-      {/* {countriesAll && countriesAll.map((item: any) => (
-        <div className='w-10/12 m-auto bg-dblueDME h-80 my-6'>
-
-          <div>
-            <img src={item.flags.svg} alt="" />
-          </div>
-
-          <div>
-            <h1 className='text-left text-whiteDMT&LME'>
-              {item.name.common}
-            </h1>
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Population: </span> <span className='text-dgrayLMI'>{item.population}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Region: </span> <span className='text-dgrayLMI'>{item.region}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Capital: </span> <span className='text-dgrayLMI'>{item.capital}</span>
-            </h1>
-
-          </div>
-        </div>
-      ))} */}
-
-        {arrayNotUndefine.length > 0 ? arrayNotUndefine.map((item: any) => 
-        {return <CountriesComponent items={props.item}/>}
-      ) : filterRegion.length > 0 ? filterRegion.map((item: any) => (
-        <div className='w-10/12 m-auto bg-dblueDME h-80 my-6'>
-
-          <div>
-            <img src={item.flags.svg} alt="" />
-          </div>
-
-          <div>
-            <h1 className='text-left text-whiteDMT&LME'>
-              {item.name.common}
-            </h1>
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Population: </span> <span className='text-dgrayLMI'>{item.population}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Region: </span> <span className='text-dgrayLMI'>{item.region}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Capital: </span> <span className='text-dgrayLMI'>{item.capital}</span>
-            </h1>
-
-          </div>
-        </div>
-      )) : countriesAll.map((item: any) => (
-        <div className='w-10/12 m-auto bg-dblueDME h-80 my-6'>
-
-          <div>
-            <img src={item.flags.svg} alt="" />
-          </div>
-
-          <div>
-            <h1 className='text-left text-whiteDMT&LME'>
-              {item.name.common}
-            </h1>
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Population: </span> <span className='text-dgrayLMI'>{item.population}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Region: </span> <span className='text-dgrayLMI'>{item.region}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Capital: </span> <span className='text-dgrayLMI'>{item.capital}</span>
-            </h1>
-
-          </div>
-        </div>
-      ))} 
-
-        
-
-
-        {/* {arrayNotUndefine.length > 0 ? arrayNotUndefine.map((item: any) => (
-        <div className='w-10/12 m-auto bg-dblueDME h-80 my-6'>
-
-          <div>
-            <img src={item.flags.svg} alt="" />
-          </div>
-
-          <div>
-            <h1 className='text-left text-whiteDMT&LME'>
-              {item.name.common}
-            </h1>
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Population: </span> <span className='text-dgrayLMI'>{item.population}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Region: </span> <span className='text-dgrayLMI'>{item.region}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Capital: </span> <span className='text-dgrayLMI'>{item.capital}</span>
-            </h1>
-
-          </div>
-        </div>
-      )) : countriesAll.map((item: any) => (
-        <div className='w-10/12 m-auto bg-dblueDME h-80 my-6'>
-
-          <div>
-            <img src={item.flags.svg} alt="" />
-          </div>
-
-          <div>
-            <h1 className='text-left text-whiteDMT&LME'>
-              {item.name.common}
-            </h1>
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Population: </span> <span className='text-dgrayLMI'>{item.population}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Region: </span> <span className='text-dgrayLMI'>{item.region}</span>
-            </h1>
-
-            <h1 className='text-left text-whiteDMT&LME'>
-              <span className='text-whiteDMT&LME'>Capital: </span> <span className='text-dgrayLMI'>{item.capital}</span>
-            </h1>
-
-          </div>
-        </div>
-      ))} */}
-
+      {arrayNotUndefine.length > 0 ? arrayNotUndefine?.map((item: any) => 
+      { return <CountriesComponent {...item} /> }
+      ) : filterRegion.length > 0 ? filterRegion?.map((item: any) => 
+      { return <CountriesComponent {...item} /> }) : countriesAll?.map((item: any) => 
+      { return <CountriesComponent {...item} /> })}
     </div>
   )
 }

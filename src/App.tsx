@@ -1,18 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-// import Test from './components/Test';
-
 import './App.css';
-import TestTest from './components/TestTest';
-
+// import logo from './logo.svg';
+// import Test from './components/Test';
+// import TestTest from './components/TestTest';
 import Home from './pages/Home';
+import { Route, Routes } from "react-router-dom";
+import HomeTemplate from './template/HomeTemplate';
+import CountriesDetail from './components/CountriesDetail';
+
 
 function App() {
   return (
-    <div className="App">
-        {/* <TestTest></TestTest> */}
-        <Home></Home>
-    </div>
+    <Routes>
+      <Route path='/' element={<HomeTemplate />}>
+        <Route index element={<Home />} />
+        <Route path='detail/:countryName' element={<CountriesDetail/>}/>
+      </Route>
+    </Routes>
   );
 }
 

@@ -9,7 +9,9 @@ export declare interface CountriesAllSlice{
     statusRegion: string
     filterRegion: any
     country: any
+    countryForDetail:any
     countryArray: any
+    countryArrayForDetail: any
     statusHome: 'Normal' | 'statusSearch' | 'statusFilterRegion'
 }
 
@@ -20,7 +22,9 @@ const initialState: CountriesAllSlice = {
     statusRegion: '',
     filterRegion: [],
     country: {},
+    countryForDetail:{},
     countryArray: [],
+    countryArrayForDetail:[],
     statusHome: 'Normal'
 }
 
@@ -53,9 +57,13 @@ const countriesAllSlice = createSlice({
         getStatusRegion:(state, aciton: PayloadAction<string>)=>{
             state.statusRegion = aciton.payload
         },
-        getCountry:(state, action: PayloadAction<string>)=>{
+        getCountry:(state, action: PayloadAction<string | any>)=>{
             state.country = state.countriesAll.find((item) => item.name.common === action.payload)
             state.countryArray.push(state.country)
+        },
+        getCountryForDetail:(state, action: PayloadAction<string | any>)=>{
+            state.countryForDetail = state.countriesAll.find((item) => item.name.common === action.payload)
+            state.countryArrayForDetail.push(state.countryForDetail)
         }
         // getRegion:()=>{},
 
@@ -109,5 +117,5 @@ const countriesAllSlice = createSlice({
     },
 })
 
-export const { getStatusRegion, getCountry } = countriesAllSlice.actions;
+export const { getStatusRegion, getCountry, getCountryForDetail } = countriesAllSlice.actions;
 export default countriesAllSlice.reducer
