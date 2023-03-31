@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 import { countriesMethod } from '../store/slices/countriesAllSlice'
 import { Countries } from '../types/countries';
 import CountriesComponent from './CountriesComponent';
+import '../styles/components/_countries.scss'
 
 export default function CountriesTest() {
   const dispatch = useAppDispatch();
@@ -30,12 +31,15 @@ export default function CountriesTest() {
   }
   clearCountry();
   return (
-    <div>
-      {arrayNotUndefine.length > 0 ? arrayNotUndefine?.map((item: any) => 
-      { return <CountriesComponent {...item} /> }
-      ) : filterRegion.length > 0 ? filterRegion?.map((item: any) => 
-      { return <CountriesComponent {...item} /> }) : countriesAll?.map((item: any) => 
-      { return <CountriesComponent {...item} /> })}
+    <div id='countries_'>
+      <div className='countries_content'>
+        {arrayNotUndefine.length > 0 ? arrayNotUndefine?.map((item: any) => 
+        { return <CountriesComponent {...item} /> }
+        ) : filterRegion.length > 0 ? filterRegion?.map((item: any) => 
+        { return <CountriesComponent {...item} /> }) : countriesAll?.map((item: any) => 
+        { return <CountriesComponent {...item} /> })}
+      </div>
     </div>
+
   )
 }

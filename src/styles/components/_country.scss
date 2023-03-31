@@ -1,0 +1,63 @@
+@import '../variables';
+@import '../mixins';
+
+#country_{
+    @include Responsive(XL){
+        flex-basis: calc(25% - 30px);
+        margin-left: 25px;
+        .country_content{
+            width: 240px;
+            height: 360px;
+            margin: 20px auto;
+            background-color: $darkblueDME;
+            border-radius: 0.5rem;
+            .country_info{
+                margin: 20px 0px 0px 20px;
+                .country_name{
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+                h1{
+                    text-align: left;
+                    color: $whiteDMTLME;
+                    .spanOne{
+                        color: $whiteDMTLME;
+                    }
+                    .spanTwo{
+                        color: $darkgrayLMI;
+                    }
+                }
+            }
+        }
+    }
+    @include Responsive(XS){
+        flex-basis: calc(100% - 0px);
+        margin-left: 0px;
+        .country_content{
+            width: 80%;
+            height: 360px;
+            margin: 20px auto;
+            background-color: $darkblueDME;
+            border-radius: 0.5rem;
+            .country_info{
+                margin: 20px 0px 0px 20px;
+                .country_name{
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+                h1{
+                    text-align: left;
+                    color: $whiteDMTLME;
+                    .spanOne{
+                        color: $whiteDMTLME;
+                    }
+                    .spanTwo{
+                        color: $darkgrayLMI;
+                    }
+                }
+            }
+        }
+    }
+}

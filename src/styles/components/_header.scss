@@ -1,0 +1,22 @@
+@import "../variables";
+@import "../mixins";
+
+#header_ {
+  .header_content {
+    background-color: $darkblueDME;
+    color: $whiteDMTLME;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    @include Responsive(XL) {
+      height: 110px;
+      padding: 30px 60px;
+      font-size: xx-large;
+    }
+    @include Responsive(XS) {
+      height: 80px;
+      padding: 30px 20px;
+      font-size: 16px;
+    }
+  }
+}

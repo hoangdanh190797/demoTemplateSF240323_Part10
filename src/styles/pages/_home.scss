@@ -1,0 +1,18 @@
+@import "../variables";
+@import "../mixins";
+
+#home_ {
+  .home_content {
+    .home_content_flex {
+      display: flex;
+      @include Responsive(XL) {
+        justify-content: space-between;
+        margin: 30px 60px;
+      }
+      @include Responsive(XS) {
+        flex-direction: column;
+        margin: 30px 0px;
+      }
+    }
+  }
+}

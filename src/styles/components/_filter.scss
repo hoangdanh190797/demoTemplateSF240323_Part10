@@ -1,0 +1,8 @@
+@import '../variables';
+@import '../mixins';
+
+#filter_{
+    @include Responsive(XS){
+        margin: 10px 40px;
+    }
+}

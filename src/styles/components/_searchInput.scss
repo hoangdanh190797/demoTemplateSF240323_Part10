@@ -1,0 +1,15 @@
+@import "../variables";
+@import "../mixins";
+
+#searchInput_ {
+  @include Responsive(XS) {
+    .searchInput_content {
+      background-color: $darkblueDME;
+      margin: 10px auto;
+      border-radius: 0.5rem;
+      .searchInput_label {
+        color: $whiteDMTLME;
+      }
+    }
+  }
+}

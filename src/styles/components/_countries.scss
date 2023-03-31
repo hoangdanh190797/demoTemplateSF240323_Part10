@@ -1,0 +1,9 @@
+@import "../variables";
+@import "../mixins";
+
+#countries_ {
+  .countries_content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
